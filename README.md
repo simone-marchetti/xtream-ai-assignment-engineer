@@ -83,9 +83,29 @@ So, ready to add some sparkle to this challenge? Let's make these diamonds shine
 
 ## How to run
 
-#### Challenge 1
 Create a venv with the provided requirements.txt
 
+#### Challenge 1
+The solution is provided in the ***eda.ipynb*** notebook You can explore the notebook by running all the cells if necessary. The "best model" is already provided in the repo (maybe not the best practice but it's very small). 
+
+#### Challenge 2
+The solution is provided in the ***script_retraining.py*** file. This file enables to retrain (or train from scratch) the catboost model I studied in the first step. To test it, from terminal, go to the repo-folder xtream-ai-assignment-engineer and run the following command:
+```
+python3 script_retraining.py\
+    --model "best_model"\
+    --iterations 1000\
+    --max_depth 10\
+    --data "/home/aisent/personal_work/challenge/xtream-ai-assignment-engineer/datasets/diamonds/diamonds.csv"\
+    --output_location "model_test"
+    --learning_rate 0.01
+```
+where the parameters are:
+- model: specify the path to the model you want to continue the traing from. If a model is not specified, then a new model from scratch is trained.
+- iterations: number of iterations.
+- max_depth: tree max depth.
+- data: specify the path to the data you wanna train the model.
+- output_location: specify where to save the model, if not specified it will be automatically saved under ***model_{k}***.
+- learning_rate: specify the learning rate.
 #### Challenge 3
 From terminal, go to the repo-folder xtream-ai-assignment-engineer and run the command "python3 app.py" (alternatively it could be python instead of python3). The output should say the server is "Running on http://127.0.0.1:5000". 
 Then you can test the predict API on Postman. If necessary download it, choose a **POST** request and insert the url http://127.0.0.1:5000/predict. Then add a new Header with the key **Content-Type** and the value **application/json**. Then go to **Body** and insert the data as:
