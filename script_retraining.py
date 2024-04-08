@@ -10,7 +10,7 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error
 parser = argparse.ArgumentParser()
 parser.add_argument("--iterations", type=int, help="an integer number")
 parser.add_argument("--max_depth", type=int, help="an integer number")
-parser.add_argument("--learning_rate", type=int, help="an integer number")
+parser.add_argument("--learning_rate", type=float, help="an integer number")
 parser.add_argument("--model", type=str, help="location of previous model")
 parser.add_argument("--data", type=str, help="location of new data")
 parser.add_argument("--output_location", type=str, help="location of output model")
@@ -56,6 +56,8 @@ else:
 ## TRAINING PHASE
 columns = ['carat', 'cut', 'color', 'clarity', 'depth', 'table', 'price', 'x', 'y',
        'z']
+training_columns = ['log_carat', 'cut', 'color', 'clarity', 'log_x', 'log_y', 'log_z',
+       'log_z-depth', 'log_table_width']
 
 if data is not None:
     _common_columns: set = set(data.columns).intersection(set(columns))
@@ -74,8 +76,7 @@ if data is not None:
         data.loc[:, f"log_{col}"] = np.log(data[col])
     logger.info("Done preprocessing")
 
-    x = data[['log_carat', 'cut', 'color', 'clarity', 'log_x', 'log_y', 'log_z',
-       'log_z-depth', 'log_table_width']]
+    x = data[training_columns]
     y = data["log_price"]
 
     X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=.2)
