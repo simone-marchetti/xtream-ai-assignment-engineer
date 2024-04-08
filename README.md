@@ -82,4 +82,52 @@ So, ready to add some sparkle to this challenge? Let's make these diamonds shine
 ---
 
 ## How to run
-Please fill this section as part of the assignment.
+
+#### Challenge 1
+Create a venv with the provided requirements.txt
+
+#### Challenge 3
+From terminal, go to the repo-folder xtream-ai-assignment-engineer and run the command "python3 app.py" (alternatively it could be python instead of python3). The output should say the server is "Running on http://127.0.0.1:5000". 
+Then you can test the predict API on Postman. If necessary download it, choose a **POST** request and insert the url http://127.0.0.1:5000/predict. Then add a new Header with the key **Content-Type** and the value **application/json**. Then go to **Body** and insert the data as:
+- dictionary (with the proper keys specified below) if only one instance to predict, for instance:
+```json
+    {
+        "carat": 1,
+        "cut": "Ideal",
+        "color": "H",
+        "clarity": "SI2",
+        "x": 6.61,
+        "y": 6.65,
+        "z": 4.11,
+        "depth": 62.0,
+        "table": 55.0
+    }
+```
+- json if more instances, for example:
+```json
+[
+    {
+        "carat": 1,
+        "cut": "Ideal",
+        "color": "H",
+        "clarity": "SI2",
+        "x": 6.61,
+        "y": 6.65,
+        "z": 4.11,
+        "depth": 62.0,
+        "table": 55.0
+    },
+    {
+        "carat": 4,
+        "cut": "Ideal",
+        "color": "H",
+        "clarity": "SI2",
+        "x": 6.61,
+        "y": 6.65,
+        "z": 4.11,
+        "depth": 62.0,
+        "table": 55.0
+    }
+]
+```
+Then send the POST request to see the predictions.
