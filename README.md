@@ -96,7 +96,7 @@ python3 script_retraining.py\
     --iterations 1000\
     --max_depth 10\
     --data "/home/aisent/personal_work/challenge/xtream-ai-assignment-engineer/datasets/diamonds/diamonds.csv"\
-    --output_location "model_test"
+    --output_location "model_test"\
     --learning_rate 0.01
 ```
 where the parameters are:
