@@ -151,3 +151,11 @@ Then you can test the predict API on Postman. If necessary download it, choose a
 ]
 ```
 Then send the POST request to see the predictions.
+
+#### Challenge 4
+For this challenge I will directly provide the answer here. To be fair, I am not expert in this specific area, I have tried to collect some information based on my work experience and online resources. In any case, I tried my best.
+
+Looking for information online, AWS offers many services for different purposes: data storaging (S3), ETL (Glue), training (SageMaker), for exposing API (Lambda) and for monitoring (CloudWatch).
+
+However, I am more familiar with local machine, so the simplest and fastes thing I would do is to get an EC2 and instantiate a docker-compose with all the servicise I need: database (mongo or SQL), jupyter for running pipelines and notebooks, and a Flask application to serve the trained model.
+In the current case, GPU for inference is not needed, while with training it could become useful. Consequently, I would get two differents EC2, in order to pay the one with GPU only for the training phase, while I would keep the backend on another one. Then, a shared file system between the two EC2 is used to share models and other files. 
